@@ -1,0 +1,5 @@
+.program rotary_encoder
+wait 1 pin 2 ; Wait for A to go high
+in pins, 1  ; Read B
+push noblock ; Push value to RX FIFO
+wrap:

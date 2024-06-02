@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "imagedata.h": "c",
+        "epd_2in9_v2.h": "c",
+        "gpio.h": "c",
+        "debug.h": "c",
+        "stdlib.h": "c",
+        "stdint.h": "c",
+        "myheader.h": "c",
+        "usb_descriptors.h": "c",
+        "string.h": "c",
+        "gui_paint.h": "c",
+        "dev_config.h": "c"
+    }
+}
