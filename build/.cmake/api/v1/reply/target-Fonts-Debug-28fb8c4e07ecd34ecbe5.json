@@ -37,20 +37,9 @@
 			[
 				{
 					"fragment" : "-mcpu=cortex-m0plus -mthumb -Og -g"
-				},
-				{
-					"fragment" : "-std=gnu11"
 				}
 			],
 			"language" : "C",
-			"languageStandard" : 
-			{
-				"backtraces" : 
-				[
-					1
-				],
-				"standard" : "11"
-			},
 			"sourceIndexes" : 
 			[
 				0,

@@ -17,7 +17,7 @@
 rule ASM_COMPILER__MacroBardo_Debug
   depfile = $DEP_FILE
   deps = gcc
-  command = C:\PROGRA~1\RASPBE~1\PICOSD~1.1\GCC-AR~1\bin\AR19DD~1.EXE $DEFINES $INCLUDES $FLAGS -o $out   -c $in
+  command = C:\PROGRA~1\RASPBE~1\PICOSD~1.1\GCC-AR~1\bin\AR19DD~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out   -c $in
   description = Building ASM object $out
 
 
@@ -85,7 +85,7 @@ rule ASM_EXECUTABLE_LINKER__bs2_default_Debug
 rule ASM_COMPILER__Config_Debug
   depfile = $DEP_FILE
   deps = gcc
-  command = C:\PROGRA~1\RASPBE~1\PICOSD~1.1\GCC-AR~1\bin\AR19DD~1.EXE $DEFINES $INCLUDES $FLAGS -o $out   -c $in
+  command = C:\PROGRA~1\RASPBE~1\PICOSD~1.1\GCC-AR~1\bin\AR19DD~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out   -c $in
   description = Building ASM object $out
 
 
@@ -124,7 +124,7 @@ rule CXX_STATIC_LIBRARY_LINKER__Config_Debug
 rule ASM_COMPILER__ePaper_Debug
   depfile = $DEP_FILE
   deps = gcc
-  command = C:\PROGRA~1\RASPBE~1\PICOSD~1.1\GCC-AR~1\bin\AR19DD~1.EXE $DEFINES $INCLUDES $FLAGS -o $out   -c $in
+  command = C:\PROGRA~1\RASPBE~1\PICOSD~1.1\GCC-AR~1\bin\AR19DD~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out   -c $in
   description = Building ASM object $out
 
 
@@ -184,7 +184,7 @@ rule C_STATIC_LIBRARY_LINKER__Fonts_Debug
 rule ASM_COMPILER__GUI_Debug
   depfile = $DEP_FILE
   deps = gcc
-  command = C:\PROGRA~1\RASPBE~1\PICOSD~1.1\GCC-AR~1\bin\AR19DD~1.EXE $DEFINES $INCLUDES $FLAGS -o $out   -c $in
+  command = C:\PROGRA~1\RASPBE~1\PICOSD~1.1\GCC-AR~1\bin\AR19DD~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out   -c $in
   description = Building ASM object $out
 
 

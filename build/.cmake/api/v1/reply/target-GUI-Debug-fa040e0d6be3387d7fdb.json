@@ -3,7 +3,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "WaveshareLib/e-Paper/libePaper.a"
+			"path" : "WaveshareLib/GUI/libGUI.a"
 		}
 	],
 	"backtrace" : 1,
@@ -19,7 +19,7 @@
 		],
 		"files" : 
 		[
-			"WaveshareLib/e-Paper/CMakeLists.txt",
+			"WaveshareLib/GUI/CMakeLists.txt",
 			"C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/pico-sdk/src/rp2_common/boot_stage2/CMakeLists.txt"
 		],
 		"nodes" : 
@@ -77,9 +77,6 @@
 				{
 					"backtrace" : 5,
 					"fragment" : "-fdata-sections"
-				},
-				{
-					"fragment" : "-std=gnu11"
 				}
 			],
 			"defines" : 
@@ -233,7 +230,7 @@
 			[
 				{
 					"backtrace" : 6,
-					"path" : "D:/MacroBardo/WaveshareLib/e-Paper/../Config"
+					"path" : "D:/MacroBardo/WaveshareLib/GUI/../Config"
 				},
 				{
 					"backtrace" : 5,
@@ -393,14 +390,6 @@
 				}
 			],
 			"language" : "C",
-			"languageStandard" : 
-			{
-				"backtraces" : 
-				[
-					1
-				],
-				"standard" : "11"
-			},
 			"sourceIndexes" : 
 			[
 				0,
@@ -410,10 +399,10 @@
 				4,
 				5,
 				6,
-				7,
 				8,
 				9,
 				10,
+				11,
 				12,
 				13,
 				14,
@@ -426,22 +415,18 @@
 				21,
 				22,
 				23,
-				24,
 				25,
 				26,
-				27,
-				29,
-				30,
+				28,
+				31,
 				32,
-				35,
 				36,
-				40,
-				41,
+				37,
+				39,
 				43,
-				47,
-				48,
-				49,
-				50
+				44,
+				45,
+				46
 			]
 		},
 		{
@@ -610,7 +595,7 @@
 			[
 				{
 					"backtrace" : 6,
-					"path" : "D:/MacroBardo/WaveshareLib/e-Paper/../Config"
+					"path" : "D:/MacroBardo/WaveshareLib/GUI/../Config"
 				},
 				{
 					"backtrace" : 5,
@@ -772,17 +757,17 @@
 			"language" : "ASM",
 			"sourceIndexes" : 
 			[
-				11,
-				28,
-				31,
+				7,
+				24,
+				27,
+				29,
+				30,
 				33,
 				34,
-				37,
+				35,
 				38,
-				39,
-				42,
-				44,
-				45
+				40,
+				41
 			]
 		},
 		{
@@ -814,9 +799,6 @@
 				{
 					"backtrace" : 5,
 					"fragment" : "-fno-use-cxa-atexit"
-				},
-				{
-					"fragment" : "-std=gnu++17"
 				}
 			],
 			"defines" : 
@@ -970,7 +952,7 @@
 			[
 				{
 					"backtrace" : 6,
-					"path" : "D:/MacroBardo/WaveshareLib/e-Paper/../Config"
+					"path" : "D:/MacroBardo/WaveshareLib/GUI/../Config"
 				},
 				{
 					"backtrace" : 5,
@@ -1130,17 +1112,9 @@
 				}
 			],
 			"language" : "CXX",
-			"languageStandard" : 
-			{
-				"backtraces" : 
-				[
-					1
-				],
-				"standard" : "17"
-			},
 			"sourceIndexes" : 
 			[
-				46
+				42
 			]
 		}
 	],
@@ -1155,13 +1129,13 @@
 			"id" : "Config::@7df226c7efff2c21d48b"
 		}
 	],
-	"id" : "ePaper::@7073b9369499607a2830",
-	"name" : "ePaper",
-	"nameOnDisk" : "libePaper.a",
+	"id" : "GUI::@fed75742c91d03308e66",
+	"name" : "GUI",
+	"nameOnDisk" : "libGUI.a",
 	"paths" : 
 	{
-		"build" : "WaveshareLib/e-Paper",
-		"source" : "WaveshareLib/e-Paper"
+		"build" : "WaveshareLib/GUI",
+		"source" : "WaveshareLib/GUI"
 	},
 	"sourceGroups" : 
 	[
@@ -1176,10 +1150,10 @@
 				4,
 				5,
 				6,
-				7,
 				8,
 				9,
 				10,
+				11,
 				12,
 				13,
 				14,
@@ -1192,40 +1166,36 @@
 				21,
 				22,
 				23,
-				24,
 				25,
 				26,
-				27,
-				29,
-				30,
+				28,
+				31,
 				32,
-				35,
 				36,
-				40,
-				41,
+				37,
+				39,
+				42,
 				43,
-				46,
-				47,
-				48,
-				49,
-				50
+				44,
+				45,
+				46
 			]
 		},
 		{
 			"name" : "",
 			"sourceIndexes" : 
 			[
-				11,
-				28,
-				31,
+				7,
+				24,
+				27,
+				29,
+				30,
 				33,
 				34,
-				37,
+				35,
 				38,
-				39,
-				42,
-				44,
-				45
+				40,
+				41
 			]
 		}
 	],
@@ -1234,31 +1204,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "WaveshareLib/e-Paper/EPD_2in9_V2.c",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "WaveshareLib/e-Paper/EPD_2in9b_V3.c",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "WaveshareLib/e-Paper/EPD_2in9bc.c",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "WaveshareLib/e-Paper/EPD_2in9d.c",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "WaveshareLib/e-Paper/ImageData.c",
+			"path" : "WaveshareLib/GUI/GUI_Paint.c",
 			"sourceGroupIndex" : 0
 		},
 		{

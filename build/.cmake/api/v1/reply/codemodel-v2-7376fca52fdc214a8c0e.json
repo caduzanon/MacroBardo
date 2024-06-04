@@ -1210,28 +1210,28 @@
 				{
 					"directoryIndex" : 81,
 					"id" : "Config::@7df226c7efff2c21d48b",
-					"jsonFile" : "target-Config-Debug-b379361d1ab1c630fc41.json",
+					"jsonFile" : "target-Config-Debug-84d6a88c550ab525407a.json",
 					"name" : "Config",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 83,
 					"id" : "Fonts::@25a7335e069a43e40451",
-					"jsonFile" : "target-Fonts-Debug-0ef3e4eaea76ea19dcf8.json",
+					"jsonFile" : "target-Fonts-Debug-28fb8c4e07ecd34ecbe5.json",
 					"name" : "Fonts",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 84,
 					"id" : "GUI::@fed75742c91d03308e66",
-					"jsonFile" : "target-GUI-Debug-faa91b31b08b2c9702cf.json",
+					"jsonFile" : "target-GUI-Debug-fa040e0d6be3387d7fdb.json",
 					"name" : "GUI",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "MacroBardo::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-MacroBardo-Debug-8de7eee35fc4b549b73f.json",
+					"jsonFile" : "target-MacroBardo-Debug-013e149b36e48ca56e6a.json",
 					"name" : "MacroBardo",
 					"projectIndex" : 0
 				},
@@ -1266,7 +1266,7 @@
 				{
 					"directoryIndex" : 82,
 					"id" : "ePaper::@7073b9369499607a2830",
-					"jsonFile" : "target-ePaper-Debug-890d6f38b05f5f7f0f31.json",
+					"jsonFile" : "target-ePaper-Debug-bb4317052451eb59e643.json",
 					"name" : "ePaper",
 					"projectIndex" : 0
 				},

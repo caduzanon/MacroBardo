@@ -3,9 +3,7 @@ cmake_minimum_required(VERSION 3.13)
 include($ENV{PICO_SDK_PATH}/external/pico_sdk_import.cmake)
 include($ENV{PICO_SDK_PATH}/tools/CMakeLists.txt)
 
-project(MacroBardo)
-set(CMAKE_C_STANDARD 11)
-set(CMAKE_CXX_STANDARD 17)
+project(MacroBardo C CXX ASM)
 
 pico_sdk_init()
 
@@ -23,14 +21,18 @@ include_directories(./WaveshareLib/GUI)
 # Generate an executable file
 add_executable(${PROJECT_NAME} 
     main.c
+    usb_descriptors.c
 )
 
-# Enable USB output, disable UART output
-pico_enable_stdio_usb(${PROJECT_NAME} 1)
-pico_enable_stdio_uart(${PROJECT_NAME} 0)
-
-# Create map/bin/hex/uf2 file etc.
-pico_add_extra_outputs(${PROJECT_NAME})
+target_include_directories(${PROJECT_NAME} PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/
+)
+# Define the TinyUSB configuration
+target_compile_definitions(${PROJECT_NAME} PUBLIC
+    PICO_STDIO_USB_CONNECT_WAIT_TIMEOUT_MS=5000
+    CFG_TUSB_MCU=OPT_MCU_RP2040
+    BOARD_TUD_RHPORT=0
+)
 
 # Link the libraries
 target_link_libraries(${PROJECT_NAME} 
@@ -45,4 +47,14 @@ target_link_libraries(${PROJECT_NAME}
     hardware_dma 
     hardware_pio 
     hardware_irq
+    tinyusb_device
+    tinyusb_board
+    pico_multicore
 )
+
+# Enable USB output, disable UART output
+pico_enable_stdio_usb(${PROJECT_NAME} 0)
+pico_enable_stdio_uart(${PROJECT_NAME} 0)
+
+# Create map/bin/hex/uf2 file etc.
+pico_add_extra_outputs(${PROJECT_NAME})

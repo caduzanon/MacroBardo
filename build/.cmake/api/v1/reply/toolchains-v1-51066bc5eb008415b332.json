@@ -5,10 +5,18 @@
 		{
 			"compiler" : 
 			{
+				"id" : "GNU",
 				"implicit" : {},
-				"path" : "C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/gcc-arm-none-eabi/bin/arm-none-eabi-gcc.exe"
+				"path" : "C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/gcc-arm-none-eabi/bin/arm-none-eabi-gcc.exe",
+				"version" : ""
 			},
-			"language" : "ASM"
+			"language" : "ASM",
+			"sourceFileExtensions" : 
+			[
+				"s",
+				"S",
+				"asm"
+			]
 		},
 		{
 			"compiler" : 
