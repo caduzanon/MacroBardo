@@ -37,8 +37,16 @@ uint8_t keycodes[12][NUM_KEYS] = {
     {HID_USAGE_CONSUMER_VOLUME_DECREMENT, 0, 0, 0, 0, 0}
 };
 
+const char* textos[3] = {
+    "Q  W   E  Pause",
+    "A  S   D  Vol +",
+    "F CtC CtV Vol -"    
+};
+
 volatile bool encoder_rotated = false;
 volatile bool clockwise = false;
+
+void draw_interface(void);
 
 void encoder_callback(uint gpio, uint32_t events) {
     static uint8_t last_state = 0;
@@ -102,6 +110,8 @@ void init_display(void) {
     printf("e-Paper Init and Clear...\r\n");
     EPD_2IN9_V2_Init();
     EPD_2IN9_V2_Clear();
+    draw_interface();  // Chama a função que desenha a interface
+    EPD_2IN9_V2_Sleep();
 }
 
 int main() {
@@ -170,4 +180,48 @@ int main() {
         }
     }
     return 0;
+}
+
+void draw_interface() {
+    UBYTE *BlackImage;
+    UWORD Imagesize = ((EPD_2IN9_V2_WIDTH % 8 == 0)? (EPD_2IN9_V2_WIDTH / 8 ): (EPD_2IN9_V2_WIDTH / 8 + 1)) * EPD_2IN9_V2_HEIGHT;//* 2;
+    if((BlackImage = (UBYTE *)malloc(Imagesize)) == NULL) {
+        printf("Failed to apply for black memory...\r\n");
+        return;
+    }
+    //printf("Paint_NewImage\r\n");
+    Paint_NewImage(BlackImage, EPD_2IN9_V2_WIDTH, EPD_2IN9_V2_HEIGHT, 90, WHITE);
+    //Paint_SelectImage(BlackImage);
+    Paint_SetScale(2); // b&w
+    Paint_Clear(WHITE);
+
+    // Desenhar grade com 9 botões no lado esquerdo
+    int i, j;
+    for (i = 0; i < 3; i++) {
+            //Paint_DrawLine(10 + j*45, 10 + i *35, 50 + j* 40, 50 + i*40, BLACK, DOT_PIXEL_2X2, LINE_STYLE_SOLID);
+            //Paint_DrawRectangle(10 + j * 45, 10 + i * 35, 50 + j * 40, 50 + i * 40, BLACK, DRAW_FILL_EMPTY, DOT_PIXEL_1X1);
+        Paint_DrawString_EN(5 + Font16.Width, 7 + i * 35 + Font16.Height, textos[i], &Font16, WHITE, BLACK); // Exemplo de texto no botão
+    }
+    int finalsize_x = 7 + i*35 + (Font16.Height*i);
+    int finalsize_y = 7 + i*35 + (Font16.Height*i);
+    //paint horizontals:
+    Paint_DrawLine(0, 30 + Font16.Height, 100 + 8*Font16.Width, 30 + Font16.Height, BLACK, DOT_PIXEL_2X2, LINE_STYLE_SOLID);
+    Paint_DrawLine(0, 65 + Font16.Height, 100 + 8*Font16.Width, 65 + Font16.Height, BLACK, DOT_PIXEL_2X2, LINE_STYLE_SOLID);
+    //paint verticals:
+    Paint_DrawLine(0, 0, 0, 128, BLACK, DOT_PIXEL_2X2, LINE_STYLE_SOLID);
+    Paint_DrawLine(11 + 2* Font16.Width, 0, 11 + 2* Font16.Width, 128, BLACK, DOT_PIXEL_2X2, LINE_STYLE_SOLID);
+    Paint_DrawLine(11 + 6* Font16.Width, 0, 11 + 6* Font16.Width, 128, BLACK, DOT_PIXEL_2X2, LINE_STYLE_SOLID);
+    Paint_DrawLine(10 + 10* Font16.Width, 0, 10 + 10* Font16.Width, 128, BLACK, DOT_PIXEL_2X2, LINE_STYLE_SOLID);
+    Paint_DrawLine(100 + 8*Font16.Width, 0, 100 + 8*Font16.Width, 128, BLACK, DOT_PIXEL_2X2, LINE_STYLE_SOLID);
+    /* Desenhar sinal de play/pause na parte inferior direita
+    Paint_DrawRectangle(180, 200, 210, 230, BLACK, DRAW_FILL_EMPTY, DOT_PIXEL_1X1);
+    Paint_DrawString_EN(185, 210, ">", &Font20, WHITE, BLACK); // Exemplo de sinal de play
+    
+
+    // Desenhar "MB" acima do sinal de play/pause
+    Paint_DrawString_EN(185, 190, "MB", &Font20, WHITE, BLACK);
+    */
+
+    EPD_2IN9_V2_Display(BlackImage);
+    free(BlackImage);
 }

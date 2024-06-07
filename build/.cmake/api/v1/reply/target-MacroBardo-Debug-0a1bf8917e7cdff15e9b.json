@@ -1431,19 +1431,19 @@
 		},
 		{
 			"backtrace" : 2,
-			"id" : "Config::@7df226c7efff2c21d48b"
-		},
-		{
-			"backtrace" : 2,
 			"id" : "ePaper::@7073b9369499607a2830"
 		},
 		{
 			"backtrace" : 2,
-			"id" : "Fonts::@25a7335e069a43e40451"
+			"id" : "Config::@7df226c7efff2c21d48b"
 		},
 		{
 			"backtrace" : 2,
 			"id" : "GUI::@fed75742c91d03308e66"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "Fonts::@25a7335e069a43e40451"
 		}
 	],
 	"id" : "MacroBardo::@6890427a1f51a3e7e1df",
