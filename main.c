@@ -92,7 +92,7 @@ void encoder_action(bool clockwise) {
         tud_hid_report(REPORT_ID_CONSUMER_CONTROL, empty_keycode, NUM_KEYS); //desmanda a bomba
     }
 }
-
+/*
 void core1_entry() {
     multicore_fifo_push_blocking(FLAG_VALUE);
     uint32_t g = multicore_fifo_pop_blocking();
@@ -101,7 +101,7 @@ void core1_entry() {
     else printf("We are good!");
     while (1) tud_task(); // tinyusb device task
 }
-
+*/
 void init_display(void) {
     if (DEV_Module_Init() != 0) {
         printf("Failed to initialize module\r\n");
@@ -127,7 +127,7 @@ int main() {
     init_encoder_interrupts();
     // Initialize display
     init_display();
-
+    /*/
     multicore_launch_core1(core1_entry);
 
     // Wait for it to start up
@@ -140,13 +140,14 @@ int main() {
         multicore_fifo_push_blocking(FLAG_VALUE);
         printf("It's all gone well on core 0!");
     }
-
+    */
     bool button_state[NUM_BUTTONS] = {false};
     bool last_button_state[NUM_BUTTONS] = {false};
     bool key_sent[NUM_BUTTONS] = {false};
 
     while (1)
     {
+        tud_task();
         if (encoder_rotated) {
             // Print the direction on the display
             encoder_action(clockwise);
@@ -177,6 +178,20 @@ int main() {
                 }
             }
             last_button_state[i] = button_state[i];
+        }
+        // Example of CDC functionality (modify as per your requirements)
+        // CDC functionality should handle serial communication
+        if (tud_cdc_connected())
+        {
+            // Handle CDC communication here
+            // Example: echo back any received data
+            char buf[64];
+            uint32_t count = tud_cdc_read(buf, sizeof(buf));
+
+            if (count > 0)
+            {
+                tud_cdc_write(buf, count); // echo back
+            }
         }
     }
     return 0;
@@ -216,11 +231,10 @@ void draw_interface() {
     /* Desenhar sinal de play/pause na parte inferior direita
     Paint_DrawRectangle(180, 200, 210, 230, BLACK, DRAW_FILL_EMPTY, DOT_PIXEL_1X1);
     Paint_DrawString_EN(185, 210, ">", &Font20, WHITE, BLACK); // Exemplo de sinal de play
-    
-
     // Desenhar "MB" acima do sinal de play/pause
     Paint_DrawString_EN(185, 190, "MB", &Font20, WHITE, BLACK);
     */
+    //Paint_DrawBitMap(gImage_2in9);
 
     EPD_2IN9_V2_Display(BlackImage);
     free(BlackImage);

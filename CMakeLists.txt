@@ -26,12 +26,19 @@ add_executable(${PROJECT_NAME}
 
 target_include_directories(${PROJECT_NAME} PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/
+    ${PICO_SDK_PATH}/lib/tinyusb/src
 )
 # Define the TinyUSB configuration
 target_compile_definitions(${PROJECT_NAME} PUBLIC
     PICO_STDIO_USB_CONNECT_WAIT_TIMEOUT_MS=5000
     CFG_TUSB_MCU=OPT_MCU_RP2040
     BOARD_TUD_RHPORT=0
+)
+
+target_compile_definitions(${PROJECT_NAME} PRIVATE
+    PICO_STDIO_USB=1
+    TINYUSB_CDC=1
+    TINYUSB_HID=1
 )
 
 # Link the libraries
@@ -43,6 +50,7 @@ target_link_libraries(${PROJECT_NAME}
     pico_stdlib 
     pico_unique_id 
     hardware_gpio 
+    hardware_uart
     hardware_spi 
     hardware_dma 
     hardware_pio 
@@ -53,7 +61,7 @@ target_link_libraries(${PROJECT_NAME}
 )
 
 # Enable USB output, disable UART output
-pico_enable_stdio_usb(${PROJECT_NAME} 0)
+pico_enable_stdio_usb(${PROJECT_NAME} 1)
 pico_enable_stdio_uart(${PROJECT_NAME} 0)
 
 # Create map/bin/hex/uf2 file etc.

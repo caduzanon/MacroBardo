@@ -10,6 +10,7 @@
         "usb_descriptors.h": "c",
         "string.h": "c",
         "gui_paint.h": "c",
-        "dev_config.h": "c"
+        "dev_config.h": "c",
+        "cdc.h": "c"
     }
 }
