@@ -23,24 +23,24 @@ const uint32_t BUTTON_PINS[NUM_BUTTONS] = {1, 4, 7, 2, 5, 8, 3, 6, 9, 13};
 uint8_t empty_keycode[NUM_KEYS] = {0};
 
 uint8_t keycodes[12][NUM_KEYS] = {
-    {HID_KEY_Q, 0, 0, 0, 0, 0}, // Button 5 sends 'B'
-    {HID_KEY_W, 0, 0, 0, 0, 0}, // Button 5 sends 'B'
-    {HID_KEY_E, 0, 0, 0, 0, 0}, // Button 5 sends 'B'
-    {HID_KEY_A, 0, 0, 0, 0, 0}, // Button 5 sends 'B'
-    {HID_KEY_S, 0, 0, 0, 0, 0}, // Button 5 sends 'B'
-    {HID_KEY_D, 0, 0, 0, 0, 0}, // Button 5 sends 'B'
-    {HID_KEY_F, 0, 0, 0, 0, 0}, // Button 5 sends 'B'
-    {HID_KEY_CONTROL_LEFT, HID_KEY_C, 0, 0, 0, 0}, // Button 1 sends 'A'qweasdff
-    {HID_KEY_CONTROL_LEFT, HID_KEY_V, 0, 0, 0, 0}, // Button 2 sends 'B'
-    {HID_USAGE_CONSUMER_PLAY_PAUSE, 0, 0, 0, 0, 0}, // Button 10 sends 'B'
-    {HID_USAGE_CONSUMER_VOLUME_INCREMENT, 0, 0, 0, 0, 0},
+    {HID_KEY_Q, 0, 0, 0, 0, 0}, // Button 1 sends 'Q'
+    {HID_KEY_W, 0, 0, 0, 0, 0}, // Button 2 sends 'W'
+    {HID_KEY_E, 0, 0, 0, 0, 0}, // Button 3 sends 'E'
+    {HID_KEY_A, 0, 0, 0, 0, 0}, // Button 4 sends 'A'
+    {HID_KEY_S, 0, 0, 0, 0, 0}, // Button 5 sends 'S'
+    {HID_KEY_D, 0, 0, 0, 0, 0}, // Button 6 sends 'D'
+    {HID_KEY_F, 0, 0, 0, 0, 0}, // Button 7 sends 'F'
+    {HID_KEY_ALT_LEFT, HID_KEY_F4, 0, 0, 0, 0}, // Button 8 sends 'Ctrl' + 'C'
+    {HID_KEY_ALT_LEFT, HID_KEY_TAB, 0, 0, 0, 0}, // Button 9 sends 'V'
+    {HID_USAGE_CONSUMER_PLAY_PAUSE, 0, 0, 0, 0, 0}, // Button 10 sends 'Play/Pause'
+    {HID_USAGE_CONSUMER_VOLUME_INCREMENT, 0, 0, 0, 0, 0},   //Button 11 sends 
     {HID_USAGE_CONSUMER_VOLUME_DECREMENT, 0, 0, 0, 0, 0}
 };
 
 const char* textos[3] = {
-    "Q  W   E  Pause",
-    "A  S   D  Vol +",
-    "F CtC CtV Vol -"    
+    " Q     W     E    Pause",
+    " A     S     D    Vol +",
+    " F   AltF4 AltTab Vol -"
 };
 
 volatile bool encoder_rotated = false;
@@ -205,14 +205,14 @@ void draw_interface() {
     int finalsize_x = 7 + i*35 + (Font16.Height*i);
     int finalsize_y = 7 + i*35 + (Font16.Height*i);
     //paint horizontals:
-    Paint_DrawLine(0, 30 + Font16.Height, 100 + 8*Font16.Width, 30 + Font16.Height, BLACK, DOT_PIXEL_2X2, LINE_STYLE_SOLID);
-    Paint_DrawLine(0, 65 + Font16.Height, 100 + 8*Font16.Width, 65 + Font16.Height, BLACK, DOT_PIXEL_2X2, LINE_STYLE_SOLID);
+    Paint_DrawLine(0, 30 + Font16.Height, 296, 30 + Font16.Height, BLACK, DOT_PIXEL_2X2, LINE_STYLE_SOLID);
+    Paint_DrawLine(0, 65 + Font16.Height, 296, 65 + Font16.Height, BLACK, DOT_PIXEL_2X2, LINE_STYLE_SOLID);
     //paint verticals:
-    Paint_DrawLine(0, 0, 0, 128, BLACK, DOT_PIXEL_2X2, LINE_STYLE_SOLID);
-    Paint_DrawLine(11 + 2* Font16.Width, 0, 11 + 2* Font16.Width, 128, BLACK, DOT_PIXEL_2X2, LINE_STYLE_SOLID);
-    Paint_DrawLine(11 + 6* Font16.Width, 0, 11 + 6* Font16.Width, 128, BLACK, DOT_PIXEL_2X2, LINE_STYLE_SOLID);
-    Paint_DrawLine(10 + 10* Font16.Width, 0, 10 + 10* Font16.Width, 128, BLACK, DOT_PIXEL_2X2, LINE_STYLE_SOLID);
-    Paint_DrawLine(100 + 8*Font16.Width, 0, 100 + 8*Font16.Width, 128, BLACK, DOT_PIXEL_2X2, LINE_STYLE_SOLID);
+    Paint_DrawLine(0, 0, 0,128, BLACK, DOT_PIXEL_2X2, LINE_STYLE_SOLID);
+    Paint_DrawLine(11 + 5* Font16.Width, 0, 11 + 5* Font16.Width, 128, BLACK, DOT_PIXEL_2X2, LINE_STYLE_SOLID);
+    Paint_DrawLine(12 + 11* Font16.Width, 0, 12 + 11* Font16.Width, 128, BLACK, DOT_PIXEL_2X2, LINE_STYLE_SOLID);
+    Paint_DrawLine(10 + 18* Font16.Width, 0, 10 + 18* Font16.Width, 128, BLACK, DOT_PIXEL_2X2, LINE_STYLE_SOLID);
+    //Paint_DrawLine(100 + 8*Font16.Width, 0, 100 + 8*Font16.Width, 128, BLACK, DOT_PIXEL_2X2, LINE_STYLE_SOLID);
     /* Desenhar sinal de play/pause na parte inferior direita
     Paint_DrawRectangle(180, 200, 210, 230, BLACK, DRAW_FILL_EMPTY, DOT_PIXEL_1X1);
     Paint_DrawString_EN(185, 210, ">", &Font20, WHITE, BLACK); // Exemplo de sinal de play
